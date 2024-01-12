@@ -12,7 +12,8 @@ function buildUserDataScript(githubRegistrationToken, label) {
       `cd "${config.input.runnerHomeDir}"`,
       `.\\config.cmd --unattended --url https://github.com/${config.githubContext.owner}/${config.githubContext.repo} --token ${githubRegistrationToken} --labels ${label}`,
       '.\\run.cmd',
-      '<\\powershell>'
+      '<\\powershell>',
+      '<persist>true</persist>'
     ];
     // return [
     //   '#!/bin/bash',

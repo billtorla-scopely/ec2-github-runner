@@ -8,9 +8,11 @@ function buildUserDataScript(githubRegistrationToken, label) {
     // If runner home directory is specified, we expect the actions-runner software (and dependencies)
     // to be pre-installed in the AMI, so we simply cd into that directory and then start the runner
     return [
+      '<powershell>',
       `cd "${config.input.runnerHomeDir}"`,
       `.\\config.cmd --unattended --url https://github.com/${config.githubContext.owner}/${config.githubContext.repo} --token ${githubRegistrationToken} --labels ${label}`,
       '.\\run.cmd',
+      '<\\powershell>'
     ];
     // return [
     //   '#!/bin/bash',
